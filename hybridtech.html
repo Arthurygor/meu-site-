@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid Tech - Soluções Digitais</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+        }
+
+        .grid-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(21, 101, 192, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(21, 101, 192, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 900px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-container {
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .logo-svg {
+            width: 120px;
+            height: 120px;
+            filter: drop-shadow(0 0 20px rgba(21, 101, 192, 0.5));
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00d4ff, #1565c0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #aaa;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #1565c0;
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+            padding: 0 20px;
+        }
+
+        .service-card {
+            background: rgba(21, 101, 192, 0.1);
+            border: 2px solid rgba(21, 101, 192, 0.3);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #1565c0;
+            box-shadow: 0 20px 40px rgba(21, 101, 192, 0.3);
+            background: rgba(21, 101, 192, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #00d4ff;
+        }
+
+        .service-description {
+            color: #ccc;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .cta-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #1565c0);
+            color: white;
+            box-shadow: 0 10px 30px rgba(21, 101, 192, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(21, 101, 192, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+        }
+
+        .btn-secondary:hover {
+            background: #00d4ff;
+            color: #0a0a0a;
+            transform: translateY(-3px);
+        }
+
+        .about {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #00d4ff;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ccc;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            background: rgba(21, 101, 192, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(21, 101, 192, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .contact {
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #00d4ff;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 30px;
+            background: rgba(21, 101, 192, 0.1);
+            border: 2px solid rgba(21, 101, 192, 0.3);
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .contact-link:hover {
+            background: rgba(21, 101, 192, 0.2);
+            border-color: #1565c0;
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(21, 101, 192, 0.3);
+            color: #666;
+            margin-top: 100px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-20px); }
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 30px;
+            height: 50px;
+            border: 2px solid #1565c0;
+            border-radius: 50px;
+            position: relative;
+        }
+
+        .scroll-indicator span::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 10px;
+            background: #1565c0;
+            border-radius: 50%;
+            animation: scrollDown 2s infinite;
+        }
+
+        @keyframes scrollDown {
+            0% { transform: translateX(-50%) translateY(0); opacity: 1; }
+            100% { transform: translateX(-50%) translateY(20px); opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .services {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="grid-background"></div>
+        
+        <div class="hero-content">
+            <div class="logo-container">
+                <svg class="logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#1565c0;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M 100,30 L 150,60 L 150,130 L 100,160 L 50,130 L 50,60 Z" 
+                          fill="none" stroke="url(#logoGrad)" stroke-width="6"/>
+                    <text x="100" y="115" font-size="60" font-weight="bold" fill="url(#logoGrad)" 
+                          text-anchor="middle" font-family="Arial">HT</text>
+                </svg>
+            </div>
+
+            <h1>HYBRID TECH</h1>
+            <p class="subtitle">SOLUÇÕES DIGITAIS</p>
+            <p class="tagline">💻 Code • Support • Marketing</p>
+
+            <div class="cta-container">
+                <a href="mailto:hybridtech.contato@gmail.com" class="btn btn-primary">
+                    📧 Solicitar Orçamento
+                </a>
+                <a href="#servicos" class="btn btn-secondary">
+                    🚀 Nossos Serviços
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <section id="servicos" class="about">
+        <h2>O que fazemos</h2>
+        <p>Transformamos ideias em soluções digitais reais. Desenvolvemos tecnologia sob medida para seu negócio crescer no ambiente digital.</p>
+
+        <div class="services">
+            <div class="service-card">
+                <span class="service-icon">💻</span>
+                <h3 class="service-title">Desenvolvimento</h3>
+                <p class="service-description">
+                    Criamos aplicações web, apps mobile e sistemas sob medida. 
+                    Código limpo, escalável e com as melhores tecnologias do mercado.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon">🔧</span>
+                <h3 class="service-title">Assistência Técnica</h3>
+                <p class="service-description">
+                    Suporte técnico especializado para manter seus sistemas funcionando. 
+                    Resolução rápida e eficiente de problemas.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon">📊</span>
+                <h3 class="service-title">Marketing Digital</h3>
+                <p class="service-description">
+                    Estratégias de marketing baseadas em dados. 
+                    Aumentamos sua presença online e geramos resultados reais.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="stats">
+        <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Comprometimento</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Disponibilidade</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Inovação</div>
+        </div>
+    </div>
+
+    <section class="about">
+        <h2>Sobre a Hybrid Tech</h2>
+        <p>
+            Somos especialistas em criar soluções digitais que fazem a diferença. 
+            Combinamos desenvolvimento de software, suporte técnico e marketing digital 
+            para oferecer um ecossistema completo de serviços tecnológicos.
+        </p>
+        <p>
+            Nosso objetivo é simples: transformar desafios em oportunidades através da tecnologia.
+        </p>
+    </section>
+
+    <section class="contact">
+        <h2>Vamos conversar?</h2>
+        <p>Entre em contato e descubra como podemos ajudar seu negócio a crescer.</p>
+
+        <div class="contact-links">
+            <a href="mailto:hybridtech.contato@gmail.com" class="contact-link">
+                <span class="contact-icon">📧</span>
+                <span>E-mail</span>
+            </a>
+            <a href="https://instagram.com/hybridtech.oficial" target="_blank" class="contact-link">
+                <span class="contact-icon">📱</span>
+                <span>Instagram</span>
+            </a>
+            <a href="https://wa.me/5511999999999" target="_blank" class="contact-link">
+                <span class="contact-icon">💬</span>
+                <span>WhatsApp</span>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Hybrid Tech - Todos os direitos reservados</p>
+        <p style="margin-top: 10px; color: #1565c0;">Desenvolvido com 💙 por Arthur Ygor</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
