@@ -1,506 +1,412 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hybrid Tech - Soluções Digitais</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Leticia Souza 💕</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Lato:wght@300;400&display=swap');
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0a0a0a;
-            color: rgb(228, 0, 0);
-            overflow-x: hidden;
-        }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            padding: 20px;
-            background: linear-gradient(135deg, #2d2828 0%, #000000 100%);
-        }
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1a0010 0%, #3d0020 40%, #1a0010 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lato', sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-        .grid-background {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(21, 101, 192, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(21, 101, 192, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
-        }
+    /* Estrelinhas de fundo */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-        @keyframes gridMove {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(50px); }
-        }
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: #fff;
+      animation: twinkle var(--d) ease-in-out infinite;
+      opacity: 0;
+    }
 
-        .hero-content {
-            text-align: center;
-            z-index: 10;
-            max-width: 900px;
-            animation: fadeInUp 1s ease;
-        }
+    @keyframes twinkle {
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+      0%,
+      100% {
+        opacity: 0;
+      }
 
-        .logo-container {
-            margin-bottom: 30px;
-            animation: float 3s ease-in-out infinite;
-        }
+      50% {
+        opacity: var(--o);
+      }
+    }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
+    /* Pétalas flutuantes */
+    .petals-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
 
-        .logo-svg {
-            width: 120px;
-            height: 120px;
-            filter: drop-shadow(0 0 20px rgba(253, 254, 255, 0.5));
-        }
+    .petal {
+      position: absolute;
+      top: -60px;
+      font-size: 1.2rem;
+      animation: fall linear infinite;
+      opacity: 0.7;
+    }
 
-        h1 {
-            font-size: 4rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, rgb(228, 0, 0), rgb(206, 0, 0));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-        }
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg) translateX(0);
+        opacity: 0.8;
+      }
 
-        .subtitle {
-            font-size: 1.5rem;
-            color: #aaa;
-            margin-bottom: 40px;
-            letter-spacing: 2px;
-        }
+      50% {
+        transform: translateY(50vh) rotate(180deg) translateX(30px);
+      }
 
-        .tagline {
-            font-size: 1.2rem;
-            color: rgb(228, 0, 0);
-            margin-bottom: 50px;
-            font-weight: 300;
-        }
+      100% {
+        transform: translateY(105vh) rotate(360deg) translateX(-10px);
+        opacity: 0.2;
+      }
+    }
 
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin: 60px 0;
-            padding: 0 20px;
-        }
+    /* Container principal */
+    .card {
+      position: relative;
+      z-index: 10;
+      max-width: 600px;
+      width: 92%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 100, 150, 0.3);
+      border-radius: 28px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 60px rgba(255, 50, 100, 0.2), inset 0 0 40px rgba(255, 100, 150, 0.05);
+      animation: fadeIn 1.5s ease forwards;
+    }
 
-        .service-card {
-            background: rgb(228, 0, 0, 0.1);
-            border: 2px solid rgb(228, 0, 0, 0.3);
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: rgb(228, 0, 0);
-            box-shadow: 0 20px 40px rgb(228, 0, 0, 0.3);
-            background: rgb(228, 0, 0, 0.2);
-        }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            display: block;
-        }
+    .rose-top {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      display: block;
+      animation: sway 3s ease-in-out infinite;
+    }
 
-        .service-title {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: rgb(228, 0, 0);
-        }
+    @keyframes sway {
 
-        .service-description {
-            color: #ccc;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
+      0%,
+      100% {
+        transform: rotate(-5deg);
+      }
 
-        .cta-container {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
+      50% {
+        transform: rotate(5deg);
+      }
+    }
 
-        .btn {
-            padding: 18px 40px;
-            font-size: 1.1rem;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
+    .subtitle {
+      font-size: 0.85rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255, 180, 200, 0.7);
+      margin-bottom: 1.2rem;
+    }
 
-        .btn-primary {
-            background: linear-gradient(135deg, rgb(228, 0, 0), #7d0000);
-            color: white;
-            box-shadow: 0 10px 30px rgba(228, 0, 0, 0.4);
-        }
+    /* Nome clicável */
+    .name-btn {
+      display: inline-block;
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.8rem;
+      font-weight: 700;
+      color: #ffb3c8;
+      cursor: pointer;
+      user-select: none;
+      text-shadow: 0 0 20px rgba(255, 100, 150, 0.5);
+      transition: transform 0.15s, text-shadow 0.15s;
+      line-height: 1.1;
+      margin-bottom: 0.3rem;
+      border: none;
+      background: none;
+      padding: 0;
+      position: relative;
+    }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(228, 0, 0, 0.6);
-        }
+    .name-btn:hover {
+      text-shadow: 0 0 35px rgba(255, 100, 150, 0.9);
+      transform: scale(1.04);
+    }
 
-        .btn-secondary {
-            background: transparent;
-            color: rgb(228, 0, 0);
-            border: 2px solid rgb(228, 0, 0);
-        }
+    .name-btn:active {
+      transform: scale(0.97);
+    }
 
-        .btn-secondary:hover {
-            background: rgb(228, 0, 0);
-            color: #0a0a0a;
-            transform: translateY(-3px);
-        }
+    .tap-hint {
+      font-size: 0.75rem;
+      color: rgba(255, 180, 200, 0.5);
+      margin-bottom: 2rem;
+      letter-spacing: 1px;
+      animation: pulse 2s ease-in-out infinite;
+    }
 
-        .about {
-            max-width: 1200px;
-            margin: 100px auto;
-            padding: 60px 20px;
-            text-align: center;
-        }
+    @keyframes pulse {
 
-        .about h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: rgb(228, 0, 0);
-        }
+      0%,
+      100% {
+        opacity: 0.5;
+      }
 
-        .about p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #ccc;
-            max-width: 800px;
-            margin: 0 auto 40px;
-        }
+      50% {
+        opacity: 1;
+      }
+    }
 
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255, 150, 180, 0.6), transparent);
+      margin: 0 auto 1.8rem;
+    }
 
-        .stat-item {
-            text-align: center;
-            padding: 30px;
-            background: rgba(21, 101, 192, 0.1);
-            border-radius: 15px;
-            border: 1px solid rgba(21, 101, 192, 0.3);
-        }
+    .message {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255, 230, 235, 0.9);
+      line-height: 1.9;
+      margin-bottom: 2rem;
+    }
 
-        .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: rgb(228, 0, 0);
-            margin-bottom: 10px;
-        }
+    .message em {
+      font-style: normal;
+      color: #ffb3c8;
+    }
 
-        .stat-label {
-            font-size: 1rem;
-            color: #aaa;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+    .sorry-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2rem;
+      color: #ff7aaa;
+      text-shadow: 0 0 15px rgba(255, 80, 130, 0.5);
+      margin-bottom: 2rem;
+    }
 
-        .contact {
-            max-width: 800px;
-            margin: 100px auto;
-            padding: 60px 20px;
-            text-align: center;
-        }
+    .footer-hearts {
+      font-size: 1.4rem;
+      letter-spacing: 6px;
+      opacity: 0.6;
+      animation: breathe 2.5s ease-in-out infinite;
+    }
 
-        .contact h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: rgb(228, 0, 0);
-        }
+    @keyframes breathe {
 
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
+      0%,
+      100% {
+        opacity: 0.5;
+        transform: scale(1);
+      }
 
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 20px 30px;
-            background: rgba(228, 0, 0, 0.1);
-            border: 2px solid rgba(228, 0, 0, 0.3);
-            border-radius: 15px;
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
-        }
+      50% {
+        opacity: 1;
+        transform: scale(1.08);
+      }
+    }
 
-        .contact-link:hover {
-            background: rgba(228, 0, 0, 0.2);
-            border-color: rgb(228, 0, 0);
-            transform: translateY(-5px);
-        }
+    /* Corações voadores */
+    .heart-burst {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      font-size: 1.8rem;
+      animation: burstFly var(--fly-d) ease-out forwards;
+      transform-origin: center;
+    }
 
-        .contact-icon {
-            font-size: 2rem;
-        }
+    @keyframes burstFly {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(0.5) rotate(var(--rot));
+      }
 
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid rgba(21, 101, 192, 0.3);
-            color: #666;
-            margin-top: 100px;
-        }
+      70% {
+        opacity: 1;
+      }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
+      100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(1.2) rotate(var(--rot2));
+      }
+    }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-20px); }
-        }
+    /* Explosão grande de corações no clique */
+    @keyframes bigBurst {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(0.3);
+      }
 
-        .scroll-indicator span {
-            display: block;
-            width: 30px;
-            height: 50px;
-            border: 2px solid rgb(228, 0, 0);
-            border-radius: 50px;
-            position: relative;
-        }
+      60% {
+        opacity: 0.9;
+      }
 
-        .scroll-indicator span::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 6px;
-            height: 10px;
-            background: rgb(228, 0, 0);
-            border-radius: 50%;
-            animation: scrollDown 2s infinite;
-        }
-
-        @keyframes scrollDown {
-            0% { transform: translateX(-50%) translateY(0); opacity: 1; }
-            100% { transform: translateX(-50%) translateY(20px); opacity: 0; }
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .subtitle {
-                font-size: 1.2rem;
-            }
-
-            .services {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-        }
-    </style>
+      100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(1.5);
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <section class="hero">
-        <div class="grid-background"></div>
-        
-        <div class="hero-content">
-            <div class="logo-container">
-                <svg class="logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:rgb(228, 0, 0);stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#ff6b6b;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <path d="M 100,30 L 150,60 L 150,130 L 100,160 L 50,130 L 50,60 Z" 
-                          fill="none" stroke="url(#logoGrad)" stroke-width="6"/>
-                    <text x="100" y="115" font-size="60" font-weight="bold" fill="url(#logoGrad)" 
-                          text-anchor="middle" font-family="Arial">HT</text>
-                </svg>
-            </div>
 
-            <h1>HYBRID TECH</h1>
-            <p class="subtitle">SOLUÇÕES DIGITAIS</p>
-            <p class="tagline">💻 Code • Support • Marketing</p>
+  <div class="stars" id="stars"></div>
+  <div class="petals-container" id="petals"></div>
 
-            <div class="cta-container">
-                <a href="mailto:hybridtech.contato@gmail.com" class="btn btn-primary">
-                    📧 Solicitar Orçamento
-                </a>
-                <a href="https://wa.me/5511987849460" target="_blank" class="btn btn-secondary">
-                    💬 WhatsApp
-                </a>
-                <a href="#servicos" class="btn btn-secondary">
-                    🚀 Nossos Serviços
-                </a>
-            </div>
-        </div>
+  <div class="card">
+    <span class="rose-top">🌹</span>
+    <p class="subtitle">Uma mensagem do coração</p>
 
-        <div class="scroll-indicator">
-            <span></span>
-        </div>
-    </section>
+    <button class="name-btn" id="nameBtn" onclick="burstHearts(event)">Leticia Souza</button>
+    <p class="tap-hint">✦ toque no seu nome ✦</p>
 
-    <section id="servicos" class="about">
-        <h2>O que fazemos</h2>
-        <p>Transformamos ideias em soluções digitais reais. Desenvolvemos tecnologia sob medida para seu negócio crescer no ambiente digital.</p>
+    <div class="divider"></div>
 
-        <div class="services">
-            <div class="service-card">
-                <span class="service-icon">💻</span>
-                <h3 class="service-title">Desenvolvimento</h3>
-                <p class="service-description">
-                    Criamos aplicações web, apps mobile e sistemas sob medida. 
-                    Código limpo, escalável e com as melhores tecnologias do mercado.
-                </p>
-            </div>
+    <p class="message">
+      Às vezes as palavras somem quando mais precisamos delas,<br>
+      mas o que nunca some é o quanto <em>você significa para mim</em>.<br><br>
+      Errei, e me arrependo de verdade.<br>
+      Você merece todo o cuidado, todo o carinho,<br>
+      toda a <em>atenção do mundo</em>.
+    </p>
 
-            <div class="service-card">
-                <span class="service-icon">🔧</span>
-                <h3 class="service-title">Assistência Técnica</h3>
-                <p class="service-description">
-                    Suporte técnico especializado para manter seus sistemas funcionando. 
-                    Resolução rápida e eficiente de problemas.
-                </p>
-            </div>
+    <p class="sorry-text">Me perdoa? 🌸</p>
 
-            <div class="service-card">
-                <span class="service-icon">📊</span>
-                <h3 class="service-title">Marketing Digital</h3>
-                <p class="service-description">
-                    Estratégias de marketing baseadas em dados. 
-                    Aumentamos sua presença online e geramos resultados reais.
-                </p>
-            </div>
-        </div>
-    </section>
+    <div class="divider"></div>
 
-    <div class="stats">
-        <div class="stat-item">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Comprometimento</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">24/7</div>
-            <div class="stat-label">Disponibilidade</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">∞</div>
-            <div class="stat-label">Inovação</div>
-        </div>
-    </div>
+    <p class="message">
+      Prometo ser melhor.<br>
+      Porque ter você do meu lado<br>
+      é o maior presente que já ganhei. <em>💕</em>
+    </p>
 
-    <section class="about">
-        <h2>Sobre a Hybrid Tech</h2>
-        <p>
-            Somos especialistas em criar soluções digitais que fazem a diferença. 
-            Combinamos desenvolvimento de software, suporte técnico e marketing digital 
-            para oferecer um ecossistema completo de serviços tecnológicos.
-        </p>
-        <p>
-            Nosso objetivo é simples: transformar desafios em oportunidades através da tecnologia.
-        </p>
-    </section>
+    <p class="footer-hearts">♡ ♡ ♡</p>
+  </div>
 
-    <section class="contact">
-        <h2>Vamos conversar?</h2>
-        <p>Entre em contato e descubra como podemos ajudar seu negócio a crescer.</p>
+  <script>
+    // Estrelinhas
+    const starsEl = document.getElementById('stars');
+    for (let i = 0; i < 80; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      const size = Math.random() * 2 + 1;
+      s.style.cssText = `
+    left:${Math.random() * 100}%;
+    top:${Math.random() * 100}%;
+    width:${size}px; height:${size}px;
+    --d:${(Math.random() * 3 + 2).toFixed(1)}s;
+    --o:${(Math.random() * 0.6 + 0.2).toFixed(2)};
+    animation-delay:${(Math.random() * 4).toFixed(1)}s;
+  `;
+      starsEl.appendChild(s);
+    }
 
-        <div class="contact-links">
-            <a href="mailto:hybridtech.contato@gmail.com" class="contact-link">
-                <span class="contact-icon">📧</span>
-                <span>E-mail</span>
-            </a>
-            <a href="https://instagram.com/hybridtech.oficial" target="_blank" class="contact-link">
-                <span class="contact-icon">📱</span>
-                <span>Instagram</span>
-            </a>
-            <a href="https://wa.me/5511987849460" target="_blank" class="contact-link">
-                <span class="contact-icon">💬</span>
-                <span>WhatsApp</span>
-            </a>
-        </div>
-    </section>
+    // Pétalas flutuantes
+    const petalsEl = document.getElementById('petals');
+    const petalEmojis = ['🌸', '🌺', '💮', '🌷'];
+    for (let i = 0; i < 14; i++) {
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
+      p.style.cssText = `
+    left:${Math.random() * 100}%;
+    animation-duration:${(Math.random() * 8 + 6).toFixed(1)}s;
+    animation-delay:${(Math.random() * 10).toFixed(1)}s;
+    font-size:${(Math.random() * 0.8 + 0.8).toFixed(1)}rem;
+  `;
+      petalsEl.appendChild(p);
+    }
 
-    <footer>
-        <p>© 2025 Hybrid Tech - Todos os direitos reservados</p>
-        <p style="margin-top: 10px; color: rgb(228, 0, 0);">Desenvolvido com 💙 por Arthur Ygor</p>
-    </footer>
+    // Explosão de corações no clique do nome
+    const hearts = ['❤️', '💕', '💖', '💗', '💓', '💝', '💞', '🌹', '💘', '💟', '♥️'];
+    function burstHearts(e) {
+      const x = e.clientX || window.innerWidth / 2;
+      const y = e.clientY || window.innerHeight / 2;
+      const count = 28;
 
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+      for (let i = 0; i < count; i++) {
+        const h = document.createElement('div');
+        h.className = 'heart-burst';
+        h.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+
+        const angle = (i / count) * 360;
+        const dist = 80 + Math.random() * 180;
+        const rad = angle * Math.PI / 180;
+        const tx = Math.cos(rad) * dist;
+        const ty = Math.sin(rad) * dist - Math.random() * 80;
+        const rot = (Math.random() - 0.5) * 60 + 'deg';
+        const rot2 = (Math.random() - 0.5) * 120 + 'deg';
+        const dur = (0.8 + Math.random() * 0.9).toFixed(2) + 's';
+        const delay = (Math.random() * 0.15).toFixed(2) + 's';
+        const size = (1.2 + Math.random() * 1.6).toFixed(1) + 'rem';
+
+        h.style.cssText = `
+      left:${x}px; top:${y}px;
+      --tx:${tx}px; --ty:${ty}px;
+      --rot:${rot}; --rot2:${rot2};
+      --fly-d:${dur};
+      font-size:${size};
+      animation-delay:${delay};
+    `;
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 2000);
+      }
+
+      // Pulsa o botão
+      const btn = document.getElementById('nameBtn');
+      btn.style.transform = 'scale(1.12)';
+      btn.style.textShadow = '0 0 50px rgba(255,80,130,1)';
+      setTimeout(() => {
+        btn.style.transform = '';
+        btn.style.textShadow = '';
+      }, 350);
+    }
+  </script>
 </body>
+
 </html>
